@@ -81,3 +81,10 @@ tbody tr:nth-child(odd) {
     bottom: 0;
     border-top: 1px solid #ccc;
 }
+
+#searchInput {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}

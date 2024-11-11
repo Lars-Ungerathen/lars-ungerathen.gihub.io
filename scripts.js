@@ -50,3 +50,21 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('searchInput');
+    const tableBody = document.querySelector('#scoreTable tbody');
+
+    searchInput.addEventListener('input', () => {
+        const filter = searchInput.value.toLowerCase();
+        const rows = tableBody.getElementsByTagName('tr');
+
+        Array.from(rows).forEach(row => {
+            const gameCell = row.getElementsByTagName('td')[1];
+            if (gameCell) {
+                const gameText = gameCell.textContent || gameCell.innerText;
+                row.style.display = gameText.toLowerCase().includes(filter) ? '' : 'none';
+            }
+        });
+    });
+});
