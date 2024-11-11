@@ -184,6 +184,10 @@ tbody tr:nth-child(odd) {
     color: var(--card-border-color);
 }
 
+body.dark-mode a:hover {
+    color: #5d5d5d;
+}
+
 body.dark-mode #searchInput {
     background-color: #333;
     color: #fff;
