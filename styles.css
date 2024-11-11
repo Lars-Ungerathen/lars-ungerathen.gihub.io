@@ -4,6 +4,7 @@ body {
     padding-bottom: 30px;
     background-color: #f4f4f4;
 }
+
 .title-bar {
     background-color: #4c70af;
     color: white;
@@ -22,21 +23,54 @@ body {
     vertical-align: middle;
     margin-right: 10px;
 }
-table {
-    width: calc(100% - 40px);
-    border-collapse: collapse;
-    margin: 20px;
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
 }
+
+.card {
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+    padding: 20px;
+    border: 1px solid #ccc;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h2 {
+    margin-top: 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
 table, th, td {
     border: 1px solid black;
 }
+
 th, td {
     padding: 10px;
     text-align: left;
 }
+
 th {
     background-color: #f2f2f2;
 }
+
+tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
 .footer {
     background-color: #4c70af;
     color: white;
@@ -45,16 +79,5 @@ th {
     position: fixed;
     width: 100%;
     bottom: 0;
+    border-top: 1px solid #ccc;
 }
-.card {
-    background-color: white;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin: 20px;
-    padding: 20px;
-    border: 1px solid #ccc;
-}
-.card h2 {
-    margin-top: 0;
-}
-
