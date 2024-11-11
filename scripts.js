@@ -11,17 +11,21 @@ document.addEventListener("DOMContentLoaded", function() {
                     const cols = row.split(',');
                     return {
                         game: cols[0],
-                        score: parseInt(cols[1], 10),
-                        summary: cols[2],
-                        setup: parseInt(cols[3], 10),
-                        expandability: parseInt(cols[4], 10),
-                        complexity: parseInt(cols[5], 10),
-                        material: parseInt(cols[6], 10),
-                        space: parseInt(cols[7], 10),
-                        players: parseInt(cols[8], 10),
-                        duration: parseInt(cols[9], 10)
+                        summary: cols[1],
+                        setup: parseInt(cols[2], 10),
+                        expandability: parseInt(cols[3], 10),
+                        complexity: parseInt(cols[4], 10),
+                        material: parseInt(cols[5], 10),
+                        space: parseInt(cols[6], 10),
+                        players: parseInt(cols[7], 10),
+                        duration: parseInt(cols[8], 10),
+                        anlFun: parseInt(cols[9], 10)
                     };
                 });
+
+            dataRows.forEach(row => {
+                row.score = row.setup + row.expandability + row.complexity + row.material + row.space + row.players + row.duration;
+            });
 
             // Sort rows by score in descending order
             dataRows.sort((a, b) => b.score - a.score);
@@ -31,13 +35,14 @@ document.addEventListener("DOMContentLoaded", function() {
                 const tr = document.createElement('tr');
                 tr.dataset.totalScore = row.score;
                 tr.dataset.summary = row.summary;
-                tr.dataset.setup = row.setup;
-                tr.dataset.expandability = row.expandability;
-                tr.dataset.complexity = row.complexity;
-                tr.dataset.material = row.material;
-                tr.dataset.space = row.space;
-                tr.dataset.players = row.players;
-                tr.dataset.duration = row.duration;
+                tr.dataset.setup = String(row.setup);
+                tr.dataset.expandability = String(row.expandability);
+                tr.dataset.complexity = String(row.complexity);
+                tr.dataset.material = String(row.material);
+                tr.dataset.space = String(row.space);
+                tr.dataset.players = String(row.players);
+                tr.dataset.duration = String(row.duration);
+                tr.dataset.anlFun = String(row.anlFun);
 
                 const placementTd = document.createElement('td');
                 if (index === 0) {
@@ -121,6 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const popupSpace = document.getElementById('popupSpace');
     const popupPlayers = document.getElementById('popupPlayers');
     const popupDuration = document.getElementById('popupDuration');
+    const popupFunScoreTitle = document.getElementById('popupFunScoreTitle');
 
     tableBody.addEventListener('click', (event) => {
         const row = event.target.closest('tr');
@@ -128,6 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const gameName = row.cells[1].textContent;
             const totalScore = parseInt(row.dataset.totalScore, 10);
             const summary = row.dataset.summary;
+            const anlFunScore = parseInt(row.dataset.anlFun, 10);
 
             popupTitle.textContent = gameName;
             popupDetails.innerHTML = ''; // Clear previous content
@@ -141,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (i >= normalizedScore) {
                     img.classList.add('duck-outline');
                 }
-                img.style.height = '20px'; // Adjust the size as needed
+                img.style.height = '20px';
                 popupDetails.appendChild(img);
             }
             const scoreText = document.createTextNode(` ${totalScore}/35`);
@@ -162,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (i >= score) {
                         img.classList.add('duck-outline');
                     }
-                    img.style.height = '20px'; // Adjust the size as needed
+                    img.style.height = '20px';
                     container.appendChild(img);
                 }
                 return container;
@@ -189,6 +196,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
             popupDuration.innerHTML = 'Spieldauer: ';
             popupDuration.appendChild(createDuckIcons(parseInt(row.dataset.duration, 10)));
+            console.log(row.dataset)
+            // Create goose icons for Alina & Lars Fun Score
+            const createGooseIcons = (score) => {
+                const container = document.createElement('span');
+                for (let i = 0; i < 5; i++) {
+                    const img = document.createElement('img');
+                    img.src = i < score ? 'assets/goose.png' : 'assets/goose_outline.png';
+                    img.alt = i < score ? 'Goose' : 'Goose Outline';
+                    if (i >= score) {
+                        img.classList.add('goose-outline');
+                    }
+                    img.style.height = '30px';
+                    container.appendChild(img);
+                }
+                return container;
+            };
+
+            // Append goose icons next to the Fun Score title
+            popupFunScoreTitle.innerHTML = 'Alina & Lars Fun Score: ';
+            popupFunScoreTitle.appendChild(createGooseIcons(anlFunScore));
 
             popupCard.style.display = 'block';
         }
