@@ -101,6 +101,54 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// Filtering
+document.addEventListener('DOMContentLoaded', () => {
+    const tableBody = document.querySelector('#scoreTable tbody');
+    const searchInput = document.getElementById('searchInput');
+    const minDuckInput = document.getElementById('minDuckInput');
+    const maxDuckInput = document.getElementById('maxDuckInput');
+    const resetButton = document.getElementById('resetButton');
+    const toggleFilterButton = document.getElementById('toggleFilterButton');
+    const filterContainer = document.getElementById('filterContainer');
+
+    const filterTable = () => {
+        const searchText = searchInput.value.toLowerCase();
+        const minFilterValue = parseInt(minDuckInput.value, 10) || 0;
+        const maxFilterValue = parseInt(maxDuckInput.value, 10) || 5;
+        const rows = tableBody.querySelectorAll('tr');
+
+        rows.forEach(row => {
+            const gameName = row.cells[1].textContent.toLowerCase();
+            const totalScore = parseInt(row.dataset.totalScore, 10);
+            const normalizedScore = Math.round((totalScore / 35) * 5);
+
+            const matchesSearch = gameName.includes(searchText);
+            const matchesFilter = normalizedScore >= minFilterValue && normalizedScore <= maxFilterValue;
+
+            if (matchesSearch && matchesFilter) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    };
+
+    searchInput.addEventListener('input', filterTable);
+    minDuckInput.addEventListener('input', filterTable);
+    maxDuckInput.addEventListener('input', filterTable);
+    resetButton.addEventListener('click', () => {
+        searchInput.value = '';
+        minDuckInput.value = '0';
+        maxDuckInput.value = '5';
+        filterTable();
+    });
+
+    toggleFilterButton.addEventListener('click', () => {
+        // also check for empty string to handle the case when the display property is not set
+        filterContainer.style.display = filterContainer.style.display === 'none' || filterContainer.style.display === "" ? 'flex' : 'none';
+    });
+});
+
 // Dark mode
 document.addEventListener('DOMContentLoaded', () => {
     const themeToggle = document.getElementById('themeToggle');
@@ -196,7 +244,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             popupDuration.innerHTML = 'Spieldauer: ';
             popupDuration.appendChild(createDuckIcons(parseInt(row.dataset.duration, 10)));
-            console.log(row.dataset)
             // Create goose icons for Alina & Lars Fun Score
             const createGooseIcons = (score) => {
                 const container = document.createElement('span');

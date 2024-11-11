@@ -188,19 +188,6 @@ body.dark-mode a:hover {
     color: #5d5d5d;
 }
 
-body.dark-mode #searchInput {
-    background-color: #333;
-    color: #fff;
-}
-
-#searchInput {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    box-sizing: border-box;
-    border: 1px solid var(--card-border-color);
-}
-
 .popup-card {
     display: none;
     position: fixed;
@@ -236,4 +223,83 @@ body.dark-mode #searchInput {
     color: #000;
     text-decoration: none;
     cursor: pointer;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+body.dark-mode #searchInput {
+    background-color: #333;
+    color: #fff;
+}
+
+#searchInput {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid var(--card-border-color);
+    height: 20px;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#toggleFilterButton {
+    margin-left: 10px;
+}
+
+#toggleFilterButton, #resetButton {
+    padding: 10px;
+    border: 1px solid var(--card-border-color);
+    background-color: var(--card-background-color);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#toggleFilterButton img, #resetButton img {
+    width: 20px;
+    height: 20px;
+}
+
+body.dark-mode #toggleFilterButton img,
+body.dark-mode #resetButton img {
+    filter: invert(1);
+}
+
+body.dark-mode #toggleFilterButton,
+body.dark-mode #resetButton {
+    background-color: #333;
+}
+
+body.dark-mode #minDuckInput,
+body.dark-mode #maxDuckInput {
+    background-color: #333;
+    color: #fff;
+}
+
+#filterContainer {
+    display: none;
+    align-items: center;
+    margin-top: 10px;
+    gap: 10px;
+}
+
+#filterContainer label {
+    margin-right: 5px;
+}
+
+#minDuckInput, #maxDuckInput {
+    padding: 10px;
+    border: 1px solid var(--card-border-color);
+    background-color: var(--card-background-color);
+    color: var(--text-color);
+    width: 100px;
+    box-sizing: border-box;
 }
