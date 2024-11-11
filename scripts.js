@@ -39,6 +39,9 @@ document.addEventListener("DOMContentLoaded", function() {
                     const img = document.createElement('img');
                     img.src = i < normalizedScore ? 'assets/duck.png' : 'assets/duck_outline.png';
                     img.alt = i < normalizedScore ? 'Duck' : 'Duck Outline';
+                    if (i >= normalizedScore) {
+                        img.classList.add('duck-outline');
+                    }
                     img.style.height = '20px'; // Adjust the size as needed
                     scoreTd.appendChild(img);
                 }
@@ -66,5 +69,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 row.style.display = gameText.toLowerCase().includes(filter) ? '' : 'none';
             }
         });
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const themeToggle = document.getElementById('themeToggle');
+    const body = document.body;
+
+    themeToggle.addEventListener('change', () => {
+        body.classList.toggle('dark-mode');
     });
 });
