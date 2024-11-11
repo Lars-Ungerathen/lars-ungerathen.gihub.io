@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const dataRows = rows
                 .filter(row => row.trim() !== '') // Ignore empty lines
                 .map(row => {
-                    const cols = row.split(',');
+                    const cols = row.split('|');
                     return {
                         game: cols[0],
                         summary: cols[1],
