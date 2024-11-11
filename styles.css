@@ -37,20 +37,26 @@ body.dark-mode .duck-outline {
 .title-bar {
     background-color: var(--title-bar-background-color);
     color: var(--text-color);
-    padding: 10px;
-    text-align: center;
     display: flex;
     align-items: center;
-    justify-content: center;
-    position: relative;
+    padding: 10px 20px;
+    border-bottom: 2px solid #e0e0e0; 
 }
 
 .title-bar img {
-    position: absolute;
-    left: 10px;
-    height: 30px;
-    vertical-align: middle;
+    height: 40px;
     margin-right: 10px;
+}
+
+.title-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--text-color);
+    margin-left: 10px;
+}
+
+.switch {
+    margin-left: auto;
 }
 
 .title-bar .switch {
@@ -159,7 +165,7 @@ tbody tr:nth-child(odd) {
     position: fixed;
     width: 100%;
     bottom: 0;
-    border-top: 1px solid var(--card-border-color);
+    border-top: 2px solid #e0e0e0; /* Subtle border */
 }
 
 .footer a {
