@@ -34,7 +34,16 @@ document.addEventListener("DOMContentLoaded", function() {
                 tr.appendChild(gameTd);
 
                 const scoreTd = document.createElement('td');
-                scoreTd.textContent = `${row.score}/35`;
+                const normalizedScore = Math.round((row.score / 35) * 5);
+                for (let i = 0; i < 5; i++) {
+                    const img = document.createElement('img');
+                    img.src = i < normalizedScore ? 'assets/duck.png' : 'assets/duck_outline.png';
+                    img.alt = i < normalizedScore ? 'Duck' : 'Duck Outline';
+                    img.style.height = '20px'; // Adjust the size as needed
+                    scoreTd.appendChild(img);
+                }
+                const scoreText = document.createTextNode(` ${row.score}/35`);
+                scoreTd.appendChild(scoreText);
                 tr.appendChild(scoreTd);
 
                 tableBody.appendChild(tr);
