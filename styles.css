@@ -9,12 +9,15 @@ body {
     color: white;
     padding: 10px;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
 }
+
 .title-bar img {
     position: absolute;
     left: 10px;
-    top: 10px;
     height: 30px;
     vertical-align: middle;
     margin-right: 10px;
