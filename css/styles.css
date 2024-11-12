@@ -38,6 +38,148 @@ body.dark-mode .goose-outline {
     filter: invert(1);
 }
 
+body.dark-mode a:hover {
+    color: #5d5d5d;
+}
+
+body.dark-mode #searchInput {
+    background-color: #333;
+    color: #fff;
+}
+
+body.dark-mode #toggleFilterButton img,
+body.dark-mode #resetButton img {
+    filter: invert(1);
+}
+
+body.dark-mode #toggleFilterButton,
+body.dark-mode #resetButton {
+    background-color: #333;
+}
+
+body.dark-mode #minDuckInput,
+body.dark-mode #maxDuckInput {
+    background-color: #333;
+    color: #fff;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+table, th, td {
+    border: 1px solid var(--table-border-color);
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: var(--table-header-background-color);
+}
+
+tbody tr:nth-child(odd) {
+    background-color: var(--table-row-odd-background-color);
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.card {
+    background-color: var(--card-background-color);
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+    padding: 20px;
+    border: 1px solid var(--card-border-color);
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h2 {
+    margin-top: 0;
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.footer {
+    background-color: var(--footer-background-color);
+    color: var(--text-color);
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    border-top: 2px solid #e0e0e0;
+}
+
+.footer a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer a:hover,
+.footer a:focus,
+.footer a:active {
+    color: var(--card-border-color);
+}
+
+.popup-card {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.popup-content {
+    background-color: var(--card-background-color);
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.switch {
+    margin-left: auto;
+}
+
 .title-bar {
     background-color: var(--title-bar-background-color);
     color: var(--text-color);
@@ -57,10 +199,6 @@ body.dark-mode .goose-outline {
     font-weight: bold;
     color: var(--text-color);
     margin-left: 10px;
-}
-
-.switch {
-    margin-left: auto;
 }
 
 .title-bar .switch {
@@ -114,126 +252,24 @@ body.dark-mode .goose-outline {
     background-color: #121212;
 }
 
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.card {
-    background-color: var(--card-background-color);
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin: 20px 0;
-    padding: 20px;
-    border: 1px solid var(--card-border-color);
-    transition: transform 0.2s;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-}
-
-.card h2 {
-    margin-top: 0;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-}
-
-table, th, td {
-    border: 1px solid var(--table-border-color);
-}
-
-th, td {
-    padding: 10px;
-    text-align: left;
-}
-
-th {
-    background-color: var(--table-header-background-color);
-}
-
-tbody tr:nth-child(odd) {
-    background-color: var(--table-row-odd-background-color);
-}
-
-.footer {
-    background-color: var(--footer-background-color);
-    color: var(--text-color);
-    text-align: center;
-    padding: 10px;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-    border-top: 2px solid #e0e0e0; /* Subtle border */
-}
-
-.footer a {
-    color: var(--text-color);
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.footer a:hover,
-.footer a:focus,
-.footer a:active {
-    color: var(--card-border-color);
-}
-
-body.dark-mode a:hover {
-    color: #5d5d5d;
-}
-
-.popup-card {
+#filterContainer {
     display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-.popup-content {
-    background-color: var(--card-background-color);
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 600px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
-}
-
-.close-btn {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close-btn:hover,
-.close-btn:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.search-container {
-    display: flex;
     align-items: center;
-    margin-bottom: 20px;
+    margin-top: 10px;
+    gap: 10px;
 }
 
-body.dark-mode #searchInput {
-    background-color: #333;
-    color: #fff;
+#filterContainer label {
+    margin-right: 5px;
+}
+
+#minDuckInput, #maxDuckInput {
+    padding: 10px;
+    border: 1px solid var(--card-border-color);
+    background-color: var(--card-background-color);
+    color: var(--text-color);
+    width: 100px;
+    box-sizing: border-box;
 }
 
 #searchInput {
@@ -241,12 +277,6 @@ body.dark-mode #searchInput {
     padding: 10px;
     border: 1px solid var(--card-border-color);
     height: 20px;
-}
-
-.search-container {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
 }
 
 #toggleFilterButton {
@@ -266,40 +296,4 @@ body.dark-mode #searchInput {
 #toggleFilterButton img, #resetButton img {
     width: 20px;
     height: 20px;
-}
-
-body.dark-mode #toggleFilterButton img,
-body.dark-mode #resetButton img {
-    filter: invert(1);
-}
-
-body.dark-mode #toggleFilterButton,
-body.dark-mode #resetButton {
-    background-color: #333;
-}
-
-body.dark-mode #minDuckInput,
-body.dark-mode #maxDuckInput {
-    background-color: #333;
-    color: #fff;
-}
-
-#filterContainer {
-    display: none;
-    align-items: center;
-    margin-top: 10px;
-    gap: 10px;
-}
-
-#filterContainer label {
-    margin-right: 5px;
-}
-
-#minDuckInput, #maxDuckInput {
-    padding: 10px;
-    border: 1px solid var(--card-border-color);
-    background-color: var(--card-background-color);
-    color: var(--text-color);
-    width: 100px;
-    box-sizing: border-box;
 }
