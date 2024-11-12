@@ -1,6 +1,6 @@
 // Data loading and table population
 document.addEventListener("DOMContentLoaded", function() {
-    fetch('data.csv')
+    fetch('../data/data.csv')
         .then(response => response.text())
         .then(data => {
             const rows = data.split('\n').slice(1); // Skip the header row
@@ -75,7 +75,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 const scoreText = document.createTextNode(` ${row.score}/35`);
                 scoreTd.appendChild(scoreText);
                 tr.appendChild(scoreTd);
-
                 tableBody.appendChild(tr);
             });
         });
