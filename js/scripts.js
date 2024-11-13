@@ -277,3 +277,30 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const titleDuck = document.getElementById('titleDuck');
+
+    titleDuck.addEventListener('click', () => {
+        for (let i = 0; i < 10; i++) {
+            setTimeout(createFallingDuck, i * 100);
+        }
+    });
+
+    const createFallingDuck = () => {
+        const duck = document.createElement('img');
+        if (Math.random() * 100 < 1) {
+            duck.src = 'assets/goose.png';
+        } else {
+            duck.src = 'assets/duck.png';
+        }
+        duck.alt = 'Duck';
+        duck.classList.add('falling-duck');
+        duck.style.left = `${Math.random() * 100}vw`;
+        document.body.appendChild(duck);
+
+        duck.addEventListener('animationend', () => {
+            duck.remove();
+        });
+    };
+});
