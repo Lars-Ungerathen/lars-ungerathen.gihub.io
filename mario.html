@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mario Kart ELO Ranking</title>
+    <link rel="icon" href="assets/Icon_Mario.png" type="image/png">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3"></script>
+</head>
+<body>
+<div class="title-bar">
+    <img id="titleDuck" src="assets/Icon_Mario.png" alt="Icon">
+    <span class="title-text">Mario Kart ELO Ranking</span>
+    <label class="switch">
+        <input type="checkbox" id="themeToggle">
+        <span class="slider round"></span>
+    </label>
+</div>
+
+<div class="large-container">
+    <canvas id="multiLineChart" width="600" height="400"></canvas>
+</div>
+<div class="container">
+    <div class="card" id="navToDuckCard">
+        <img class="card-image" src="assets/duck.png" alt="Duck Icon">
+        <h2>Brettspiele Duck Score</h2>
+    </div>
+</div>
+
+<div class="footer">
+    <a href="https://github.com/Lars-Ungerathen/lars-ungerathen.github.io" title="GitHub">🔗 Lars Ungerathen - 2024</a> |
+    <a href="https://www.flaticon.com/free-icons/duck" title="duck icons">🔗 Duck icons created by Freepik - Flaticon</a> |
+    <a href="https://www.flaticon.com/free-icons/animal" title="animal icons">🔗 Animal icons created by Mihimihi - Flaticon</a>
+</div>
+
+<script src="js/mario.js"></script>
+</body>
+</html>

@@ -304,3 +304,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 });
+
+document.getElementById('navToMarioCard').addEventListener('click', function() {
+    window.location.href = 'mario.html';
+});

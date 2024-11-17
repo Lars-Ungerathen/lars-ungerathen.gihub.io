@@ -91,7 +91,14 @@ tbody tr:nth-child(odd) {
     padding: 20px;
 }
 
+.large-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
 .card {
+    position: relative;
     background-color: var(--card-background-color);
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -101,12 +108,22 @@ tbody tr:nth-child(odd) {
     transition: transform 0.2s;
 }
 
+.card-image {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
+
 .card:hover {
     transform: translateY(-5px);
 }
 
 .card h2 {
     margin-top: 0;
+    margin-left: 70px; /* Add margin to avoid overlap with the image */
 }
 
 .close-btn {
