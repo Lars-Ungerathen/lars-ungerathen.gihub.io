@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(response => response.text())
         .then(scores => {
             const players = scores.split('\n').slice(1); // Skip the header row
-
             let ds = [];
             let labels = [];
             const colorMap = {
@@ -36,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                 })
 
-            for(let i = 0; i <= ds[0].data.length; i++) {
+            for(let i = 0; i <= ds[0].data.length + 20; i++) {
                 labels.push(i);
             }
 
@@ -45,41 +44,109 @@ document.addEventListener('DOMContentLoaded', () => {
                 datasets: ds
             };
 
-            const imgLabelPlugin = {
-                id: 'image_label_plugin',
-                afterDatasetsDraw: (chart) => {
-                    console.log("image_label_plugin")
-                    const ctx = chart.ctx;
-                    chart.data.datasets.forEach((dataset, i) => {
-                        const meta = chart.getDatasetMeta(i);
-                        const lastPoint = meta.data[meta.data.length - 1];
-                        const label = dataset.label;
-                        ctx.save();
-                        ctx.font = '12px Arial';
-                        ctx.fillStyle = dataset.borderColor;
-                        ctx.fillText(label, lastPoint.x + 5, lastPoint.y - 5);
-                        ctx.restore();
-                    });
-                },
-                defaults: {
-                    color: 'lightGreen'
-                }
-            }
+            let imgLars = new Image();
+            imgLars.src = '../assets/Icon_Gelber_Shy_Guy.png';
 
+            let imgNils = new Image();
+            imgNils.src = '../assets/Icon_Blauer_Shy_Guy.png';
 
-            const options = {
-                scales: {
-                    x: {
-                        beginAtZero: true
-                    }
-                }
-            }
+            let imgAlina = new Image();
+            imgAlina.src = '../assets/Icon_Oranger_Yoshi.png';
 
-            new Chart(ctx, {
+            let imgJulia = new Image();
+            imgJulia.src = '../assets/Icon_Blauer_Yoshi.png';
+
+            let imgPapi = new Image();
+            imgPapi.src = '../assets/Icon_Yoshi.png';
+
+            const config = {
                 type: 'line',
                 data: data,
-                plugins: [imgLabelPlugin],
-                options: options
-            });
+                options: {
+                    plugins: {
+                        annotation: {
+                            annotations: {
+                                labelNils: {
+                                    type: 'label',
+                                    drawTime: 'afterDraw',
+                                    content: imgNils,
+                                    width: 25,
+                                    height: 25,
+                                    xValue: ds.find(dataset => dataset.label === "Nils").data.length - 1,
+                                    yValue: ds.find(dataset => dataset.label === "Nils").data[ds.find(dataset => dataset.label === "Nils").data.length - 1],
+                                    xAdjust: 30,
+                                    yAdjust: 0,
+                                    callout: {
+                                        display: true,
+                                        position: 'left'
+                                    }
+                                },
+                                labelLars: {
+                                    type: 'label',
+                                    drawTime: 'afterDraw',
+                                    content: imgLars,
+                                    width: 25,
+                                    height: 25,
+                                    xValue: ds.find(dataset => dataset.label === "Lars").data.length - 1,
+                                    yValue: ds.find(dataset => dataset.label === "Lars").data[ds.find(dataset => dataset.label === "Lars").data.length - 1],
+                                    xAdjust: 30,
+                                    yAdjust: 0,
+                                    callout: {
+                                        display: true,
+                                        position: 'left'
+                                    }
+                                },
+                                labelAlina: {
+                                    type: 'label',
+                                    drawTime: 'afterDraw',
+                                    content: imgAlina,
+                                    width: 25,
+                                    height: 25,
+                                    xValue: ds.find(dataset => dataset.label === "Alina").data.length - 1,
+                                    yValue: ds.find(dataset => dataset.label === "Alina").data[ds.find(dataset => dataset.label === "Alina").data.length - 1],
+                                    xAdjust: 30,
+                                    yAdjust: 0,
+                                    callout: {
+                                        display: true,
+                                        position: 'left'
+                                    }
+                                },
+                                labelJulia: {
+                                    type: 'label',
+                                    drawTime: 'afterDraw',
+                                    content: imgJulia,
+                                    width: 25,
+                                    height: 25,
+                                    xValue: ds.find(dataset => dataset.label === "Julia").data.length - 1,
+                                    yValue: ds.find(dataset => dataset.label === "Julia").data[ds.find(dataset => dataset.label === "Julia").data.length - 1],
+                                    xAdjust: 30,
+                                    yAdjust: 0,
+                                    callout: {
+                                        display: true,
+                                        position: 'left'
+                                    }
+                                },
+                                labelPapi: {
+                                    type: 'label',
+                                    drawTime: 'afterDraw',
+                                    content: imgPapi,
+                                    width: 25,
+                                    height: 25,
+                                    xValue: ds.find(dataset => dataset.label === "Papi").data.length - 1,
+                                    yValue: ds.find(dataset => dataset.label === "Papi").data[ds.find(dataset => dataset.label === "Papi").data.length - 1],
+                                    xAdjust: 30,
+                                    yAdjust: 0,
+                                    callout: {
+                                        display: true,
+                                        position: 'left'
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+
+            new Chart(ctx, config);
         });
 });
