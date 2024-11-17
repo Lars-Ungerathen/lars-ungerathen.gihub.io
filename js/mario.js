@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                 })
 
-            for(let i = 0; i <= ds[0].data.length + 20; i++) {
+            for(let i = 0; i <= ds[0].data.length + 40; i++) {
                 labels.push(i);
             }
 
